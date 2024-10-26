@@ -1,6 +1,6 @@
 import axios from 'axios';
 
-const REACT_APP_BASE_URL = "http://localhost:4321";
+const REACT_APP_BASE_URL = "https://expensive-lgia.onrender.com";
 
 export const signIn = async (data) => {
     try {
