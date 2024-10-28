@@ -36,14 +36,14 @@ const TablegridView = () => {
 
       {/* Table Content */}
       <ul role="list" className="divide-y divide-gray-100">
-        {resData.length==0? <div className="col-span-1 text-sm font-semibold leading-6">NO Payment Data Captured in Recent Time</div>:resData.map((person, index) => (
+        {resData.length==0? <div className="col-span-1 text-sm font-semibold leading-6">No Payment Data Captured in Recent Times</div>:resData.map((person, index) => (
           <li
             key={index}
             className="grid grid-cols-4 gap-4 py-5 items-center text-gray-900"
           >
             <div className="col-span-1 text-sm font-semibold leading-6">{person.paid_to}</div>
             <div className="col-span-1 text-sm font-semibold leading-6">{person.amount}</div>
-            <div className="col-span-1 text-sm font-semibold leading-6">{person.date}</div>
+            <div className="col-span-1 text-sm font-semibold leading-6">{person.date.split("G")[0]}</div>
             <div className="col-span-1 text-sm leading-6">{person.message}</div>
           </li>
         ))}

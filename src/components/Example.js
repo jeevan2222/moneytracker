@@ -3,6 +3,7 @@ import { Bars3Icon, BellIcon, XMarkIcon } from '@heroicons/react/24/outline'
 import TablegridView from "./TablegridView"
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
+
 const navigation = [
   { name: 'Dashboard', href: '#', current: true },
   { name: 'Team', href: '#', current: false },
@@ -14,15 +15,19 @@ function classNames(...classes) {
   return classes.filter(Boolean).join(' ')
 }
 
+
 export default function Example() {
   const navigate = useNavigate();
-
+  const [showNotification,setShowNotification]=useState(false);
 
 const logout=()=>{
   localStorage.setItem("isAuthenticated", false);
   navigate('/')
 }
-
+const openNotification=()=>{
+  console.log('open notification')
+  setShowNotification(true);
+}
 
 
   return <>
@@ -69,10 +74,12 @@ const logout=()=>{
             <button
               type="button"
               className="relative rounded-full bg-gray-800 p-1 text-gray-400 hover:text-white focus:outline-none focus:ring-2 focus:ring-white focus:ring-offset-2 focus:ring-offset-gray-800"
+              onClick={()=>openNotification()}
             >
               <span className="absolute -inset-1.5" />
               <span className="sr-only">View notifications</span>
-              <BellIcon aria-hidden="true" className="h-6 w-6" />
+              <BellIcon aria-hidden="true" className="relative h-6 w-6" />
+              <span className='absolute left-5.5 top-0'> 9+</span>
             </button>
 
             {/* Profile dropdown */}
@@ -133,7 +140,9 @@ const logout=()=>{
       </DisclosurePanel>
     </Disclosure>
 
-
+     {
+      showNotification && <h1 className='w-200px h-350px'>Pop Up Opened</h1>
+     }
     <TablegridView />
   
   
