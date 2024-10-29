@@ -1,7 +1,7 @@
 import axios from 'axios';
 
-const REACT_APP_BASE_URL = "https://expensive-lgia.onrender.com";
-// const REACT_APP_BASE_URL="http://localhost:4321"
+// const REACT_APP_BASE_URL = "https://expensive-lgia.onrender.com";
+const REACT_APP_BASE_URL="http://localhost:4321"
 
 export const signIn = async (data) => {
     try {
@@ -18,6 +18,24 @@ export const signIn = async (data) => {
         return error.response?.data;
     }
 };
+
+
+export const signUp = async (data) => {
+    try {
+        const response = await axios.post(`${REACT_APP_BASE_URL}/create`, data, {
+            headers: {
+                Accept: "application/json",
+                "Content-Type": "application/json",
+            },
+        });
+        return response?.data;
+
+    } catch (error) {
+        console.error(error);  
+        return error.response?.data;
+    }
+};
+
 
 export const getMoney = async (data) => {
     console.log(data);
