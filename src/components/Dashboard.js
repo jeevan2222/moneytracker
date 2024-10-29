@@ -38,7 +38,7 @@ function Dashboard() {
     if (res.Status === 201) {
       navigate("/home");
       localStorage.setItem("isAuthenticated", true);
-      localStorage.setItem("email", signDetails.email);
+      localStorage.setItem("email", signUpDetails.email);
     } else if (res.status === 404 || res.error) {
       setIsvaliduser(true);
     }
